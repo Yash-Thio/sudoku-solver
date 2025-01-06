@@ -7,8 +7,9 @@ import numpy as np
 
 def create_digit_recognition_model():
     model = models.Sequential([
+        layers.Input(shape=(28, 28, 1)),  # Use Input layer as the first layer
         # First Conv Block
-        layers.Conv2D(64, (3, 3), padding='same', input_shape=(28, 28, 1)),
+        layers.Conv2D(64, (3, 3), padding='same'),
         layers.BatchNormalization(),
         layers.Activation('relu'),
         layers.Conv2D(64, (3, 3), padding='same'),

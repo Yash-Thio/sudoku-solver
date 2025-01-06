@@ -1,1 +1,1 @@
-{"root":["./global.d.ts","./src/index.ts"],"version":"5.7.2"}
+{"root":["./global.d.ts","./src/index.ts","./src/services/store.ts","./src/services/websocket.ts","./src/shared/types.ts","./src/tests/test-client.ts","./src/workers/image-worker/index.ts","./src/workers/solver-worker/index.ts"],"version":"5.7.2"}

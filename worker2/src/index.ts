@@ -1,4 +1,5 @@
 import { createClient } from "redis";
+import { pubSub } from "../../express-backend/src/store";
 
 const redisClient = createClient();
 
@@ -43,11 +44,15 @@ function solveSudoku(board: number[][]): boolean {
 }
 
 async function processSudoku(sudoku: string) {
-  const board = JSON.parse(sudoku);
+  const data = JSON.parse(sudoku);
+  const board = data.sudoku;
+  const userId = data.userId;
   if (solveSudoku(board.sudoku)) {
     console.log("Solved Sudoku:", board);
+    pubSub.publishSolution(userId, board)
   } else {
     console.log("No solution exists for the given Sudoku.");
+    pubSub.publishSolution(userId, []);
   }
 }
 
